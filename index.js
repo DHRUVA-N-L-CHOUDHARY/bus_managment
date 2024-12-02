@@ -16,6 +16,8 @@ const adminRoutes = require("./routes/admin");
 const ownerRoutes = require("./routes/owner");
 const searchRoutes = require('./routes/search')
 const universalRoutes = require('./routes/universal')
+const assistanceRoutes = require('./routes/assistanceRequest');
+const locationRecognitionRoutes = require("./routes/locationRecognition");
 
 const swaggerSpec = require("./swagger");
 
@@ -43,6 +45,8 @@ app.use(fileUpload({ useTempFiles: true, tempFileDir: "tmp/" }));
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 app.set("json spaces", 5);
+
+
 
 // app.post('/api/v1/upload', async (req, res) => {
 //   console.log(req.files)
@@ -85,6 +89,8 @@ app.use("/api/v1/admin", adminRoutes);
 app.use("/api/v1/owner", ownerRoutes);
 app.use('/api/v1/search',searchRoutes);
 app.use('/api/v1/universal',universalRoutes);
+app.use('/api/v1/request', assistanceRoutes);
+app.use("/api/v1/location", locationRecognitionRoutes);
 
   connectToDatabase();
 
