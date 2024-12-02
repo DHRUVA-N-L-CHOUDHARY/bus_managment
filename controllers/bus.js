@@ -32,8 +32,8 @@ exports.createBus = async (req, res) => {
       busDetails = JSON.parse(busDetails);
     }
     const { street, city, state, country, pincode } = parkingAddress;
-    const { busType, capacity, fuelType, fuelCapacity } = busDetails;
-    const { certificates } = req.files;
+    const { busType, capacity, fuelType, fuelCapacity,  } = busDetails;
+    const { certificates, modelFile, previewImage } = req.files;
 
     if (
       !name ||
