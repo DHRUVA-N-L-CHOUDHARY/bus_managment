@@ -26,9 +26,13 @@ require("dotenv").config({ path: ".env" });
 
 const port = process.env.PORT || 5000;
 
-app.use(
-  cors()
-);
+const corsOptions = {
+  origin: "http://localhost:5173", // Replace with your frontend's URL
+  credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+};
+
+app.use(cors(corsOptions));
+
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("dev"));
 app.use(express.json());
