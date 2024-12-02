@@ -4,7 +4,6 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
 const cors = require("cors");
-const swaggerUI = require("swagger-ui-express");
 const helmet = require("helmet");
 const morgan = require("morgan");
 
@@ -19,7 +18,6 @@ const universalRoutes = require('./routes/universal')
 const assistanceRoutes = require('./routes/assistanceRequest');
 const locationRecognitionRoutes = require("./routes/locationRecognition");
 
-const swaggerSpec = require("./swagger");
 
 const fileparser = require("./config/parseFile");
 const upload = require("./middlewares/multer");
@@ -42,7 +40,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(fileUpload({ useTempFiles: true, tempFileDir: "tmp/" }));
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 app.set("json spaces", 5);
 
