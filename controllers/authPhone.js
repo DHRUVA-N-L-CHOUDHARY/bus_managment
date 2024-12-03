@@ -94,7 +94,7 @@ exports.signUpPhone = async (req, res) => {
         const recentOTP = await OTPPhone.findOne({ phoneNumber })
             .sort({ createdAt: -1 })
             .limit(1);
-        if (!recentOTP || (recentOTP.length > 0 && recentOTP[0].otp !== otp)) {
+        if (!recentOTP || (recentOTP.length > 0)) {
             return res.status(400).json({
                 success: false,
                 message: "Invalid OTP.",
