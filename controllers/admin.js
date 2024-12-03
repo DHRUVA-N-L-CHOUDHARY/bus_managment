@@ -13,6 +13,7 @@ const { Admin, User, Staff, Owner } = require("../utils/enumTypes");
 exports.getUsers = async (req, res) => {
   try {
     const users = await UserModel.find(
+      {},
       { password: 0 }
     )
       .populate("additionalDetails")
@@ -90,7 +91,7 @@ exports.getUserBasedPhoneNumber = async (req, res) => {
     const regex = new RegExp(phoneNumber, "i"); // 'i' flag for case-insensitive match
 
     const users = await UserModel.find(
-      { phoneNumber: regex},
+      { phoneNumber: regex, accountType: { $ne: process.env.ADMIN_ROLE } },
       { password: 0 }
     )
       .populate("additionalDetails")
