@@ -90,7 +90,7 @@ exports.getUserBasedPhoneNumber = async (req, res) => {
     const regex = new RegExp(phoneNumber, "i"); // 'i' flag for case-insensitive match
 
     const users = await UserModel.find(
-      { phoneNumber: regex, accountType: { $ne: process.env.ADMIN_ROLE } },
+      { phoneNumber: regex},
       { password: 0 }
     )
       .populate("additionalDetails")

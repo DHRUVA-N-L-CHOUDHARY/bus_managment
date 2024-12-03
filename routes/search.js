@@ -12,24 +12,24 @@ const {
 } = require("../controllers/stop");
 const { getTravelBuses, createTravel } = require("../controllers/travel");
 const {
-  auth,
+   
   isUser,
   isStaff,
-  isOwner,
-  isAdmin,
+   
+   
 } = require("../middlewares/middleware");
 
 //! Travel Routes
 router.post("/searchTravel", getTravelBuses); //Working
-router.post("/createTravel", auth, isOwner, createTravel); //Working
+router.post("/createTravel",     createTravel); //Working
 
 //! Stop Routes
-router.get("/stops", auth, getStops); // Working
-router.get("/stop", auth, getStopByName); //Working
-router.get("/stopByCity", auth, getStopByCity);
-router.get("/stop/:id", auth, getStopById); //Working
-router.post("/stop", auth, isAdmin, createStop); //Working
-router.put("/stop/:id", auth, isAdmin, updateStop); //Working
-router.delete("/stop/:id", auth, isAdmin, deleteStop); //Working
+router.get("/stops",   getStops); // Working
+router.get("/stop",   getStopByName); //Working
+router.get("/stopByCity",   getStopByCity);
+router.get("/stop/:id",   getStopById); //Working
+router.post("/stop",     createStop); //Working
+router.put("/stop/:id",     updateStop); //Working
+router.delete("/stop/:id",     deleteStop); //Working
 
 module.exports = router;

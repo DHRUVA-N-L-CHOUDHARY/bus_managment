@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const { createOwner } = require("../controllers/owner");
-const { auth, isUser, isStaff, isOwner } = require("../middlewares/middleware");
+const {   isUser, isStaff, isOwner } = require("../middlewares/middleware");
 const {
   createBus,
   getBuses,
@@ -13,21 +13,21 @@ const {
 } = require("../controllers/bus");
 const { createSeats, getSeats, editSeats } = require("../controllers/seat");
 
-router.post("/registerOwner", auth, createOwner); // Working
+router.post("/registerOwner",   createOwner); // Working
 
 //! Bus Routes
-router.post("/createBus", auth, isOwner, createBus); // Working
-router.get("/getBuses", auth, isOwner, getBuses); // Working
-router.get("/getBus/:id", auth, isOwner, getBus); // Working
+router.post("/createBus",     createBus); // Working
+router.get("/getBuses",     getBuses); // Working
+router.get("/getBus/:id",     getBus); // Working
 
 //! Essential routes for bus
-router.post("/createSeats/:busId", auth, isOwner, createSeats);
-router.get("/getSeats/:busId", auth, getSeats);
-router.put("/editSeats/:busId", auth, isOwner, editSeats);
+router.post("/createSeats/:busId",     createSeats);
+router.get("/getSeats/:busId",   getSeats);
+router.put("/editSeats/:busId",     editSeats);
 
 //! Essential stop routes for bus
-router.post("/addStops/:busId", auth, isOwner, addStops);
-router.get("/getStops/:busId", auth, getStops);
-router.put("/editStops/:busId", auth, isOwner, editStops);
+router.post("/addStops/:busId",     addStops);
+router.get("/getStops/:busId",   getStops);
+router.put("/editStops/:busId",     editStops);
 
 module.exports = router;

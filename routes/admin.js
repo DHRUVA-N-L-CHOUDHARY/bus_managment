@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { isAdmin, isUser, auth } = require("../middlewares/middleware");
+const { isUser, auth } = require("../middlewares/middleware");
 const {
   getStops,
   createStop,
@@ -27,33 +27,32 @@ const {
 
 //! Stop Routes
 router.get("/stops", getStops); // Working
-router.get("/stop", auth, getStopByName); //Working
-router.get("/stop/:id", auth, getStopById); //Working
-router.post("/stop", auth, isAdmin, createStop); //Working
-router.put("/stop/:id", auth, isAdmin, updateStop); //Working
-router.delete("/stop/:id", auth, isAdmin, deleteStop); //Working
-router.post("/stops/source", auth, getSourceStops); //Working
-router.post("/stops/destination", auth, getDestinationStops); // Working
+router.get("/stop", getStopByName); //Working
+router.get("/stop/:id", getStopById); //Working
+router.post("/stop", createStop); //Working
+router.put("/stop/:id", updateStop); //Working
+router.delete("/stop/:id", deleteStop); //Working
+router.post("/stops/source", getSourceStops); //Working
+router.post("/stops/destination", getDestinationStops); // Working
 
 //! Admin Routes
-router.get("/users", auth, isAdmin, getUsers); //Working
-router.get("/user/:id", auth, isAdmin, getUser); // Working
-router.get("/userPhone", auth, isAdmin, getUserBasedPhoneNumber); //Working
-router.get("/owners", auth, isAdmin, getOwners); //Working
-router.get("/owner/:id", auth, isAdmin, getOwnerById); // Working
+router.get("/users", getUsers); //Working
+router.get("/user/:id", getUser); // Working
+router.get("/userPhone", getUserBasedPhoneNumber); //Working
+router.get("/owners", getOwners); //Working
+router.get("/owner/:id", getOwnerById); // Working
 
 //! Bus Routes
-router.get("/buses", auth, isAdmin, getBuses); //Working
-router.get("/bus/:id", auth, isAdmin, getBusById); //Working
+router.get("/buses", getBuses); //Working
+router.get("/bus/:id", getBusById); //Working
 
 //! Booking Routes
 router.get(
   "/bookings/:phoneNumber",
-  auth,
-  isAdmin,
+
   getBookingsBasedOnPhoneNumber
 );
-router.get("/bookings/:userId", auth, isAdmin, getBookingsBasedOnUserId);
-router.get("/booking/:id", auth, isAdmin, getBooking);
+router.get("/bookings/:userId", getBookingsBasedOnUserId);
+router.get("/booking/:id", getBooking);
 
 module.exports = router;

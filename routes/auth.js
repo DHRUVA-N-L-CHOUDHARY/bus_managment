@@ -51,7 +51,7 @@ router.post("/verifyOTPEmail", verifyOTPEmail); //Working
 
 router.post("/signUp", signUpPhone); //Working
 router.post("/login", loginUsingPhoneNumber); //Working
-router.put("/changePassword", auth, changePasswordPhone); //Working
+router.put("/changePassword",    changePasswordPhone); //Working
 router.post("/forgotPassword", forgotPasswordPhone); //Working
 router.get("/refreshRoute", refreshRoute); //Working
 router.post("/logout", logout); //Working
@@ -62,7 +62,7 @@ router.post("/reset-Password", resetPassword); //Working
 router.post("/reset-Password-Token-Phone", resetPasswordTokenPhone); //Working
 router.post("/reset-Password-Phone", resetPassword); //Working
 
-router.post("/randomRoute", auth, async (req, res) => {
+router.post("/randomRoute",    async (req, res) => {
   try {
     const { phoneNumber, id } = req.user;
     console.log(req.user, "lkdjf;alsjdlckas clwkjdlkj hellow rodld");

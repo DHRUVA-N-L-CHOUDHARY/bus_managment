@@ -10,9 +10,9 @@ const {
 
 const { auth } = require("../middlewares/middleware");
 
-router.post("/deleteAccount", auth, deleteAccount);
-router.put("/updateDisplayPicture", auth, updateDisplayPicture);
-router.post("/updateProfile", auth, updateProfile);
-router.get("/getUserDetails", auth, getUserDetails);
+router.post("/deleteAccount",   deleteAccount);
+router.put("/updateDisplayPicture",   updateDisplayPicture);
+router.post("/updateProfile",   updateProfile);
+router.get("/getUserDetails",   getUserDetails);
 
 module.exports = router;
