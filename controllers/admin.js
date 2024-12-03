@@ -13,7 +13,6 @@ const { Admin, User, Staff, Owner } = require("../utils/enumTypes");
 exports.getUsers = async (req, res) => {
   try {
     const users = await UserModel.find(
-      { accountType: { $ne: process.env.ADMIN_ROLE } },
       { password: 0 }
     )
       .populate("additionalDetails")
